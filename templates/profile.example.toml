@@ -1,0 +1,73 @@
+# Copy to ~/job-agent/profile.toml (or $JOBAGENT_HOME/profile.toml) and fill in.
+# The agent answers application forms ONLY from this file and your CV. Anything not here is asked, never guessed.
+# Example below: a mechanical engineer looking in Germany, the Netherlands and Türkiye. Replace everything.
+
+[person]
+first_name = "Deniz"
+last_name = "Example"
+email = "deniz@example.com"
+phone = "+90 555 000 00 00"
+city = "Izmir"
+country = "Türkiye"
+linkedin = "https://www.linkedin.com/in/your-handle"   # typed into forms only; the agent never opens LinkedIn
+website = ""
+pronouns = ""                                          # empty = leave the field empty
+
+[work_authorization]
+# Answer these exactly. Forms ask "Are you authorized to work in X?" and "Will you need sponsorship?".
+citizenships = ["Türkiye"]
+authorized_to_work_in = ["Türkiye"]          # countries where you need NO visa
+needs_sponsorship_elsewhere = true
+willing_to_relocate = true
+relocation_countries = ["Germany", "Netherlands", "Austria", "Switzerland"]
+earliest_start = "immediately"               # or "2027-01-15"
+notice_period = "none"                       # or "4 weeks"
+
+[targets]
+# Regexes, case-insensitive. A title must match one include and no exclude (unless keep_even_if_excluded matches).
+titles_include = ["mechanical engineer", "mechanical design", "design engineer", "r&d engineer",
+                  "product development engineer", "hardware engineer", "cad engineer", "simulation engineer",
+                  "fea", "konstrukteur", "maschinenbau", "makine mühendisi", "mechatronics engineer"]
+titles_exclude = ["senior", "\\bsr\\b", "staff", "principal", "\\blead\\b", "head of", "manager", "director", "intern",
+                  "working student", "werkstudent", "praktikum",
+                  "ausbildung", "dual", "bachelor", "studium", "mechaniker\\b", "sales", "technician", "electrical", "software"]
+keep_even_if_excluded = []                   # e.g. ["senior design engineer"] if seniors are fine
+locations_include = ["germany", "deutschland", "berlin", "munich", "münchen", "hamburg", "stuttgart",
+                     "netherlands", "amsterdam", "eindhoven", "delft", "austria", "vienna",
+                     "switzerland", "zurich", "türkiye", "turkey", "istanbul", "izmir", "ankara"]
+remote_ok = true                             # accept "Remote" unless an excluded region is named
+locations_exclude = ["united states", "\\busa?\\b", "canada", "india", "china", "apac", "latam"]
+languages_ok = ["english", "turkish"]         # postings that REQUIRE other languages get flagged
+skip_companies = []                          # never apply (e.g. current employer)
+ask_before_sectors = ["defense", "weapons", "gambling", "tobacco"]
+
+[cv]
+# Which CV to upload. Rules are checked in order against the posting title; first match wins.
+default = "~/Documents/CV/Deniz_Example_Mechanical_Engineer_CV.pdf"
+rules = [
+  { match = "simulation|fea|cfd", file = "~/Documents/CV/Deniz_Example_Simulation_Engineer_CV.pdf" },
+]
+cover_letter = "only_if_required"            # never | only_if_required | always
+
+[answers]
+# Free-text salary fields. If a form REQUIRES a number, the agent stops and asks (unless salary_number is set).
+salary_text = "Open and flexible; happy to align with the band for this role."
+salary_number = ""                           # e.g. "60000 EUR gross per year"; empty = ask the user
+how_did_you_hear = "Company careers page"
+demographics = "decline"                     # gender, ethnicity, disability, veteran: "decline" to self-identify
+years_of_experience = 3                      # total professional years, exact
+highest_degree = "B.Sc. Mechanical Engineering, Example Technical University, 2022"
+
+[facts]
+# The ONLY material for written answers ("Why us?", "Describe a project ...").
+# Every line must be true and something you can talk about in an interview. No numbers you cannot back up.
+summary = "Mechanical design engineer with 3 years in automotive interiors: SolidWorks and CATIA V5, DFM, GD&T, tooling reviews with suppliers."
+highlights = [
+  "Designed 14 injection-moulded interior parts from concept to SOP for two vehicle programs.",
+  "Cut part cost about 8% on a console assembly by merging two brackets (DFM review with the supplier).",
+  "Ran FEA (ANSYS Mechanical) for snap-fit and bracket stiffness; correlated with physical tests.",
+]
+tools = ["SolidWorks", "CATIA V5", "ANSYS Mechanical", "GD&T (ASME Y14.5)", "Teamcenter", "MATLAB"]
+languages = ["Turkish (native)", "English (C1)", "German (A2)"]
+# Things the agent must never claim: list them so it does not drift.
+never_claim = ["German fluency", "people management", "certifications I do not hold"]
