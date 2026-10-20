@@ -11,7 +11,7 @@ invent experience. Those items are left for you, listed one by one.
 ## Install
 
 ```bash
-git clone https://github.com/<you>/job-application-agent ~/.claude/skills/job-application-agent
+git clone https://github.com/ardaisker/job-application-agent ~/.claude/skills/job-application-agent
 mkdir -p ~/job-agent && cp ~/.claude/skills/job-application-agent/templates/profile.example.toml ~/job-agent/profile.toml
 ```
 
